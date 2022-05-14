@@ -1,0 +1,6 @@
+4
+4
+S aS
+S bA
+A #
+A cA

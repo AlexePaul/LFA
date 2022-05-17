@@ -1,4 +1,3 @@
-aaab
-aabc
-abcc
-bccc
+aabd
+abcd
+bccd

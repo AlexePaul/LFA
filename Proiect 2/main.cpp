@@ -7,7 +7,7 @@ ofstream fout("output.txt");
 
 unordered_map<char, vector<string>>umap; // folosit pentru a retine productiile
 string cuv; // cuvantul generat de gramatica
-int n,p; // n reprezinta dimensiunea cuv generate, p este numarul de productii
+int lung,productii; // lung reprezinta dimensiunea cuv generate, productii este numarul de productii
 
 bool afisare(){
 	for(int i = 0; i < cuv.size(); ++i){
@@ -25,7 +25,7 @@ bool afisare(){
 int sizecuv(){ // am avut nevoie de o functie care sa imi spuna cat de lung este cuvantul in afara de neterminale si lambda
 	int temp = cuv.size();
 	for(int i = 0; i < cuv.size(); ++i){
-		if((cuv[i] >= 65 && cuv[i] <= 90) || cuv[i] == '#'){ 
+		if((cuv[i] >= 'A' && cuv[i] <= 'Z') || cuv[i] == '#'){ 
 			temp--;
 		}
 	}
@@ -33,14 +33,14 @@ int sizecuv(){ // am avut nevoie de o functie care sa imi spuna cat de lung este
 }
 
 void bkt(){
-	if(sizecuv() == n){ // daca cuvantul este de dimensiune n, pot sa incerc sa il afisez
+	if(sizecuv() == lung){ // daca cuvantul este de dimensiune n, pot sa incerc sa il afisez
 		if(afisare() == true) // doar in cazul in care am reusit intr-adevar sa il afisez ma pot intoarce in recursivitate
 			return;
 	}
-	if(sizecuv() > n) // daca deja a depasit n, este clar ca nu voi ajunge la un cuvant generat de dimensioune n
+	if(sizecuv() > lung) // daca deja a depasit n, este clar ca nu voi ajunge la un cuvant generat de dimensioune n
 		return;
 	for(int i = 0; i < cuv.size(); ++i){ // verific toate productiile, care pleaca din neterminalul gasit
-		if(cuv[i] >= 65 && cuv[i] <= 90){
+		if(cuv[i] >= 'A' && cuv[i] <= 'Z'){
 			char lit = cuv[i];
 			string cop = cuv;
 			cuv.erase(i, 1);
@@ -54,8 +54,8 @@ void bkt(){
 }
 
 int main(){
-	fin >> n >> p;
-	for(int i = 0; i < p; ++i){
+	fin >> lung >> productii;
+	for(int i = 0; i < productii; ++i){
 		char c;
 		string s;
 		fin >> c;
